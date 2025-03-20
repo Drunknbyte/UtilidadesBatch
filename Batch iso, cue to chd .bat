@@ -1,7 +1,10 @@
 @echo off
 setlocal enabledelayedexpansion
 
+set "found=0"
+
 for %%F in (*.iso *.cue) do (
+    set "found=1"
     echo Se encontró: %%F
     set /p confirm="¿Deseas convertir este archivo? (s/n): "
     if /i "!confirm!"=="s" (
@@ -15,6 +18,8 @@ for %%F in (*.iso *.cue) do (
         if /i "!confirm_delete!"=="s" del "%%F"
     )
 )
+
+if %found%==0 echo No se encontraron archivos .iso o .cue en la carpeta actual.
 
 echo Proceso finalizado.
 pause
