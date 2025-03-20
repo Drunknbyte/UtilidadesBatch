@@ -15,7 +15,12 @@ for %%F in (*.iso *.cue) do (
         echo Archivo convertido: !output! (Tamaño: !size! bytes)
         
         set /p confirm_delete="¿Es satisfactorio? ¿Eliminar el archivo original? (s/n): "
-        if /i "!confirm_delete!"=="s" del "%%F"
+        if /i "!confirm_delete!"=="s" (
+            del "%%F"
+            if "%%~xF"==".cue" (
+                for %%B in ("%%~nF"*.bin) do del "%%B"
+            )
+        )
     )
 )
 
