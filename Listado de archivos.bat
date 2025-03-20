@@ -12,7 +12,7 @@ for %%F in (*) do (
 )
 
 rem Definir el nombre del archivo con la cantidad de archivos
-set "filename=listado_archivos_!count!.txt"
+set "filename=Archivos_Listado_!count!.txt"
 
 rem Crear el archivo de texto con los nombres de los archivos
 (
